@@ -4,8 +4,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import Index from './components/index';
-import SignUp from './components/signup';
+import Index from './screens/index';
+import SignUp from './screens/signup';
 
 const reducers = combineReducers({
   // key: reducer
