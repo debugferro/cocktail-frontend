@@ -1,9 +1,9 @@
-export function loggedInReducer(state = false, action) {
+export function authenticationReducer(state = false, action) {
   switch (action.type) {
     case 'SET_LOGGED_IN':
-      return { ...state, logged_in: true };
+      return { ...state, authenticated: true };
     case 'SET_LOGGED_OFF':
-      return { ...state, logged_in: false };
+      return { ...state, authenticated: false };
 
     default:
       return state;

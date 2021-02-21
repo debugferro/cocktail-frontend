@@ -8,8 +8,11 @@ import login from '../../actions/login';
 function Login({ login }) {
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (data) => {
-    login(data);
+  const onSubmit = async (data) => {
+    const result = await login(data);
+    if (result.logged_in) {
+      console.log('congratulations');
+    }
   };
 
   return (

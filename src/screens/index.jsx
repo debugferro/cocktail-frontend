@@ -4,14 +4,14 @@ import Login from './components/login';
 import DashBord from './dashbord';
 
 function Index() {
-  const loggedIn = useSelector((state) => state.logged_in);
+  const authenticated = useSelector((state) => state.authenticated);
   return (
     <div>
       <h1>Cocktails!</h1>
-      { !loggedIn &&
+      { !authenticated &&
         <Login />
       }
-      { loggedIn &&
+      { authenticated &&
         <DashBord />
       }
     </div>
