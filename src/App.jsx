@@ -7,12 +7,17 @@ import thunk from 'redux-thunk';
 import Index from './screens/index';
 import SignUp from './screens/signup';
 
+import { loggedInReducer, userReducer } from './reducers/login_reducers';
+
 const reducers = combineReducers({
   // key: reducer
+  logged_in: loggedInReducer,
+  user: userReducer,
 });
 
 const initialState = {
-
+  logged_in: false,
+  user: '',
 };
 
 const middlewares = applyMiddleware(thunk);

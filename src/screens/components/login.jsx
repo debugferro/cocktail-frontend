@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
-function Login() {
+import login from '../../actions/login';
+
+function Login({ login }) {
   const { register, handleSubmit, errors } = useForm();
-  const { dispatch } = useDispatch;
 
-  function onSubmit(data) {
-    dispatch()
-  }
+  const onSubmit = (data) => {
+    login(data);
+  };
 
   return (
     <div>
@@ -28,4 +29,6 @@ function Login() {
   );
 }
 
-export default Login;
+const mapDispatchToProps = { login: (data) => login(data) };
+
+export default connect(null, mapDispatchToProps)(Login);
