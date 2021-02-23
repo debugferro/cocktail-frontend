@@ -16,7 +16,7 @@ export default function Login() {
     // if (result.logged_in) {
     //   console.log('congratulations');
     // }
-    const result = await dispatch(requestAuthentication(data));
+    dispatch(requestAuthentication(data));
   };
 
   return (

@@ -11,22 +11,19 @@ const userSlice = createSlice({
     requestStatus: 'idle',
     errors: [],
   },
-  reducers: {
-    // setUser(state, action) {
-    //   return { ...state, user: action.usernama, email: action.email, id: action.id };
-    // },
-  },
+  reducers: {},
   extraReducers: {
-    [requestAuthentication.pending]: (state) => {
-      return { ...state, requestStatus: 'pending' };
-    },
-    [requestAuthentication.fulfilled]: (state, action) => {
-      const data = action.payload;
-      return { ...state, ...data, requestStatus: 'idle' };
-    },
+    [requestAuthentication.pending]:
+    (state) => ({ ...state, requestStatus: 'pending' }),
+    [requestAuthentication.fulfilled]:
+    (state, { payload }) => ({ ...state, ...payload, requestStatus: 'idle' }),
     [requestAuthentication.rejected]: (state, action) => {
-      console.log(action)
-      return { ...state, errors: action.payload, requestStatus: 'error' };
+      // Dealing errors. If no payload is informed, then a message will be at least.
+      const fullState = { ...state, requestStatus: 'rejected' };
+      if (action.payload) {
+        return { ...fullState, ...action.payload };
+      }
+      return { ...fullState, errors: [action.error.message] };
     },
   },
 });
