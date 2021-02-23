@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import loginSlice from '../actions/loginSlice';
+import userSlice from './slices/userSlice';
 
 const reducer = combineReducers({
-  login: loginSlice,
+  user: userSlice,
 });
 
 const store = configureStore({
   reducer,
 });
+
+export default store;

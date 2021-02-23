@@ -1,18 +1,22 @@
 import React, { useCallback } from 'react';
 
 import { useForm } from 'react-hook-form';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
-import login from '../../actions/login';
+// import login from '../../actions/login';
+import requestAuthentication from '../../requests/authentication';
 
-function Login({ login }) {
+export default function Login() {
   const { register, handleSubmit, errors } = useForm();
+  const authenticated = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
-    const result = await login(data);
-    if (result.logged_in) {
-      console.log('congratulations');
-    }
+    // const result = await login(data);
+    // if (result.logged_in) {
+    //   console.log('congratulations');
+    // }
+    const result = await dispatch(requestAuthentication(data));
   };
 
   return (
@@ -32,6 +36,6 @@ function Login({ login }) {
   );
 }
 
-const mapDispatchToProps = { login: (data) => login(data) };
+// const mapDispatchToProps = { login: (data) => login(data) };
 
-export default connect(null, mapDispatchToProps)(Login);
+// export default connect(null, mapDispatchToProps)(Login);

@@ -7,27 +7,19 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Index from './screens/index';
 import SignUp from './screens/signup';
 
-import { authenticationReducer, userReducer } from './reducers/login_reducers';
+import store from './store';
 
-const reducers = combineReducers({
-  // key: reducer
-  authenticated: authenticationReducer,
-  user: userReducer,
-});
+// import { authenticationReducer, userReducer } from './reducers/login_reducers';
 
-const initialState = {
-  authenticated: false,
-  user: '',
-};
+// const reducers = combineReducers({
+//   // key: reducer
+//   authenticated: authenticationReducer,
+//   user: userReducer,
+// });
 
-
-const store = createStore(reducers, initialState);
+// const store = createStore(reducers, initialState);
 
 function App() {
-  useEffect(() => {
-
-}, []);
-
   return (
     <Provider store={store}>
       <BrowserRouter>
