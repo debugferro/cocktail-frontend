@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 
 import Index from './screens/index';
 import SignUp from './screens/signup';
@@ -20,8 +20,8 @@ const initialState = {
   user: '',
 };
 
-const middlewares = applyMiddleware(thunk);
-const store = createStore(reducers, initialState, middlewares);
+
+const store = createStore(reducers, initialState);
 
 function App() {
   useEffect(() => {
