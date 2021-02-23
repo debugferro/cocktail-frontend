@@ -9,7 +9,7 @@ const requestAuthentication = createAsyncThunk(
   'user/authLogin',
   async (data, { rejectWithValue }) => {
     const user = {
-      email: data.username,
+      email: data.email,
       password: data.password,
     };
     try {
