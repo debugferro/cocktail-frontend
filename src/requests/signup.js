@@ -6,11 +6,18 @@ import config from './config';
 // Authentication API call for login
 
 const requestSignup = createAsyncThunk(
-  'user/authLogin',
-  async (data, { rejectWithValue }) => {
+  'signup/registerUser',
+  async (user, { rejectWithValue, getState, requestId  }) => {
+    const { presentRequestId, requestStatus } = getState().signup;
+    if (requestStatus !== 'pending' || requestId !== presentRequestId) return;
     try {
-      const response = await axios.get(`${config.url}/signup`, { withCredentials: true });
-      return response.data.user;
+      const response = await axios.post(`${config.url}/users`, { user }, { withCredentials: true });
+      // Reject if backend answers with any status other than 200
+      if (response.data.status !== 200) {
+        return rejectWithValue(response.data);
+      }
+
+      return response.data.user; // Success
     } catch (err) {
       if (!err.response) throw err; // No response message from backend (probably network failure)
       return rejectWithValue(err.response.data); // Any other type of error

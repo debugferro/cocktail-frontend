@@ -7,11 +7,10 @@ import config from './config';
 
 const requestAuthentication = createAsyncThunk(
   'user/authLogin',
-  async (data, { rejectWithValue }) => {
-    const user = {
-      email: data.email,
-      password: data.password,
-    };
+  async (user, { rejectWithValue, getState, requestId }) => {
+    const { presentRequestId, requestStatus } = getState().user;
+    if (requestStatus !== 'pending' || requestId !== presentRequestId) return;
+
     try {
       const response = await axios.post(`${config.url}/login`, { user }, { withCredentials: true });
       if (response.data.status === 401) {

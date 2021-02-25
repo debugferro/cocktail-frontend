@@ -1,26 +1,55 @@
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as yup from 'yup';
 
 import requestSignUp from '../../requests/signup';
+import checkAuthentication from '../../requests/check_authentication'
+import authenticate from '../../actions/authenticate';
+
+toast.configure();
 
 const validationSchema = yup.object().shape({
-  email: yup.string()
-    .email('E-mail address format is invalid')
-    .required('E-mail address is required'),
-  username: yup.string().min(3).max(20),
-  password: yup.string().required('Password is required!').min(8).max(20),
-  passwordConfirmation: yup.string()
-    .oneOf([yup.ref('password'), null], 'Password must match'),
+  // email: yup.string()
+  //   .email('E-mail address format is invalid')
+  //   .required('E-mail address is required'),
+  // username: yup.string().min(3).max(20).required('Username is required'),
+  // password: yup.string().required('Password is required!').min(8).max(20),
+  // password_confirmation: yup.string()
+  //   .oneOf([yup.ref('password'), null], 'Password must match'),
 });
 
-export default function SingUpForm() {
+export default function SingUpForm({ history }) {
   const { register, handleSubmit, errors } = useForm({ mode: 'onChange', resolver: yupResolver(validationSchema) });
   const dispatch = useDispatch();
+  const apiErrors = useSelector((state) => state.signup.errors);
+
+  useEffect(() => {
+    if(apiErrors && apiErrors.length) {
+      apiErrors.forEach((error) => {
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+    }
+  }, [apiErrors]);
 
   const onSubmit = async (data) => {
-    dispatch(requestSignUp(data));
+    console.log('starting...')
+    const response = await dispatch(requestSignUp(data));
+    if (response.payload && response.payload.isAuthenticated) {
+      dispatch(authenticate(response.payload));
+      history.push('/');
+    }
   };
 
   return (
@@ -35,8 +64,8 @@ export default function SingUpForm() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" ref={register()} />
         {errors.password && <p>{errors.password.message}</p>}
-        <label htmlFor="passwordConfirmation">Password Confirmation</label>
-        <input type="password" name="passwordConfirmation" id="passwordConfirmation" ref={register()} />
+        <label htmlFor="password_confirmation">Password Confirmation</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
         {errors.passwordConfirmation && <p>{errors.passwordConfirmation.message}</p>}
         <input type="submit" />
       </form>

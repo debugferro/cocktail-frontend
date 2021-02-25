@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Index from './screens/index';
 import SignUp from './screens/signup';
@@ -15,19 +16,22 @@ function App() {
     dispatch(checkAuthentication());
   }, []);
 
-  const authenticated = useSelector((state) => state.user.authenticated);
+  const authenticated = useSelector((state) => state.user.entity.isAuthenticated);
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Index} />
-          { authenticated ? undefined :
-            [
-              <Route exact path="/signup" component={SignUp} />,
-              <Route exact path="/login" component={Login} />
-            ]
-          }
+
+            <Route exact path="/" component={Index} />
+            { authenticated ? '' :
+              [
+                <Route exact path="/signup" component={SignUp} />,
+                <Route exact path="/login" component={Login} />
+              ]
+            }
+
         </Switch>
+
       </BrowserRouter>
     </>
   );
