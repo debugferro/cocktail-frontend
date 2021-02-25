@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
     .required('E-mail address is required'),
   username: yup.string().min(3).max(20).required('Username is required'),
   password: yup.string().required('Password is required!').min(8).max(20),
-  password_confirmation: yup.string()
+  password_confirmation: yup.string().required('Password confirmation is required')
     .oneOf([yup.ref('password'), null], 'Password must match'),
 });
 
@@ -70,7 +70,7 @@ export default function SingUpForm() {
         {errors.password && <p>{errors.password.message}</p>}
         <label htmlFor="password_confirmation">Password Confirmation</label>
         <input type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
-        {errors.passwordConfirmation && <p>{errors.passwordConfirmation.message}</p>}
+        {errors.password_confirmation && <p>{errors.password_confirmation.message}</p>}
         <input type="submit" />
       </form>
     </div>
