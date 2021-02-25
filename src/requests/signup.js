@@ -5,16 +5,15 @@ import config from './config';
 
 // Authentication API call for login
 
-const requestAuthentication = createAsyncThunk(
-  'user/authLogin',
-  async (user, { rejectWithValue, getState, requestId }) => {
-    const { presentRequestId, requestStatus } = getState().user;
+const requestSignup = createAsyncThunk(
+  'signup/registerUser',
+  async (user, { rejectWithValue, getState, requestId  }) => {
+    const { presentRequestId, requestStatus } = getState().signup;
     if (requestStatus !== 'pending' || requestId !== presentRequestId) return;
-
     try {
-      const response = await axios.post(`${config.url}/login`, { user }, { withCredentials: true });
-      if (response.data.status === 401) {
-        // Reject if backend answers with 401 status
+      const response = await axios.post(`${config.url}/users`, { user }, { withCredentials: true });
+      // Reject if backend answers with any status other than 200
+      if (response.data.status !== 200) {
         return rejectWithValue(response.data);
       }
 
@@ -26,4 +25,4 @@ const requestAuthentication = createAsyncThunk(
   },
 );
 
-export default requestAuthentication;
+export default requestSignup;

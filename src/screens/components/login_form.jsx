@@ -10,7 +10,7 @@ const validationSchema = yup.object().shape({
   password: yup.string().required('Password is required!'),
 });
 
-export default function Login() {
+export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm({ mode: 'onChange', resolver: yupResolver(validationSchema) });
   const dispatch = useDispatch();
 
