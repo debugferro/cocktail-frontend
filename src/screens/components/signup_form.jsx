@@ -1,31 +1,34 @@
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import * as yup from 'yup';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import requestSignUp from '../../requests/signup';
-import checkAuthentication from '../../requests/check_authentication'
 import authenticate from '../../actions/authenticate';
 
 toast.configure();
 
 const validationSchema = yup.object().shape({
-  // email: yup.string()
-  //   .email('E-mail address format is invalid')
-  //   .required('E-mail address is required'),
-  // username: yup.string().min(3).max(20).required('Username is required'),
-  // password: yup.string().required('Password is required!').min(8).max(20),
-  // password_confirmation: yup.string()
-  //   .oneOf([yup.ref('password'), null], 'Password must match'),
+  email: yup.string()
+    .email('E-mail address format is invalid')
+    .required('E-mail address is required'),
+  username: yup.string().min(3).max(20).required('Username is required'),
+  password: yup.string().required('Password is required!').min(8).max(20),
+  password_confirmation: yup.string()
+    .oneOf([yup.ref('password'), null], 'Password must match'),
 });
 
-export default function SingUpForm({ history }) {
+export default function SingUpForm() {
   const { register, handleSubmit, errors } = useForm({ mode: 'onChange', resolver: yupResolver(validationSchema) });
   const dispatch = useDispatch();
   const apiErrors = useSelector((state) => state.signup.errors);
+  const history = useHistory();
 
   useEffect(() => {
     if(apiErrors && apiErrors.length) {
@@ -46,6 +49,7 @@ export default function SingUpForm({ history }) {
   const onSubmit = async (data) => {
     console.log('starting...')
     const response = await dispatch(requestSignUp(data));
+    console.log(response);
     if (response.payload && response.payload.isAuthenticated) {
       dispatch(authenticate(response.payload));
       history.push('/');
