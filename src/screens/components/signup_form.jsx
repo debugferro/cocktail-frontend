@@ -9,6 +9,8 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import styles from '../../styles/components/signup_form.module.css';
+
 import requestSignUp from '../../requests/signup';
 import authenticate from '../../actions/authenticate';
 
@@ -57,22 +59,29 @@ export default function SingUpForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">E-mail</label>
-        <input type="text" name="email" id="email" ref={register()} />
-        {errors.email && <p>{errors.email.message}</p>}
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" id="username" ref={register()} />
-
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" ref={register()} />
-        {errors.password && <p>{errors.password.message}</p>}
-        <label htmlFor="password_confirmation">Password Confirmation</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
-        {errors.password_confirmation && <p>{errors.password_confirmation.message}</p>}
+    <>
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input required novalidate type="text" name="email" id="email" ref={register()} />
+          <label htmlFor="email">E-mail</label>
+          {errors.email && <p>{errors.email.message}</p>}
+        </div>
+        <div>
+          <input required novalidate type="text" name="username" id="username" ref={register()} />
+          <label htmlFor="username">Username</label>
+        </div>
+        <div>
+          <input required novalidate type="password" name="password" id="password" ref={register()} />
+          <label htmlFor="password">Password</label>
+          {errors.password && <p>{errors.password.message}</p>}
+        </div>
+        <div>
+          <input required novalidate type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
+          <label htmlFor="password_confirmation">Password Confirmation</label>
+          {errors.password_confirmation && <p>{errors.password_confirmation.message}</p>}
+        </div>
         <input type="submit" />
       </form>
-    </div>
+    </>
   );
 }

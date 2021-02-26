@@ -1,0 +1,35 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer > div {
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formContainer > div > label {
+  position: absolute;
+  top: .2rem;
+  left: 0;
+  transition: .3s;
+  transform-origin: left;
+}
+
+.formContainer > div > input {
+  outline: none;
+
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: .5rem;
+
+  background-color: transparent;
+}
+
+.formContainer > div > input:focus ~ label,
+.formContainer > div > input:valid ~ label {
+  top: -1.5rem;
+  font-size: 0.8rem;
+}
