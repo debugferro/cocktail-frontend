@@ -1,0 +1,28 @@
+.topBar{
+  background-color: var(--yellow-honey);
+  width: 100%;
+  padding: .4rem;
+
+  display: flex;
+  justify-content: center;
+}
+
+.topBar > span {
+  color: var(--whitecocktail);
+  font-weight: 800;
+  font-size: 2rem;
+  text-shadow: 1px 1px 1px var(--box-shadow);
+
+  margin-right: 2rem;
+}
+
+.topBar > span:last-child {
+  margin-left: 4rem;
+  margin-right: 0;
+}
+
+@media(min-width: 480px){
+  .topBar{
+    display: none;
+  }
+}

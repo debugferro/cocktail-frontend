@@ -8,6 +8,7 @@
   height: 100vh;
   max-width: 992px;
   margin: 0 auto;
+  padding-top: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -17,8 +18,10 @@
 .card {
   background-color: var(--whitecocktail);
   box-shadow: 0.5em 0.5em 0em var(--box-shadow);
+
   padding: .8rem;
   max-width: 300px;
+  margin-top: 1rem;
 }
 
 .card > h1 {
@@ -28,7 +31,7 @@
 
 @media(min-width: 280px) {
   .container {
-    padding: 2.5rem 2rem;
+    padding: 1rem 2rem;
   }
 
   .card {

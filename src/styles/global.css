@@ -32,6 +32,9 @@
   html {
     font-size: 81.5%;
   }
+  .Toastify__toast-container--top-right {
+    width: 100%
+  }
 }
 
 @media(max-width: 320px) {
