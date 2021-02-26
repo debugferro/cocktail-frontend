@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
-// import reportWebVitals from '../tests/reportWebVitals';
+
+import './styles/global.css';
 
 ReactDOM.render(
   <React.StrictMode>

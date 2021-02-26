@@ -7,6 +7,10 @@ import Index from './screens/index';
 import SignUp from './screens/signup';
 import Login from './screens/login';
 
+import Logo from './screens/components/logo';
+import TopBar from './screens/components/top_bar';
+import TabBar from './screens/components/tab_bar';
+
 import checkAuthentication from './requests/check_authentication';
 
 function App() {
@@ -20,6 +24,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <TopBar />
+      <TabBar />
         <Switch>
 
             <Route exact path="/" component={Index} />

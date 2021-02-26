@@ -1,0 +1,68 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer > div {
+  position: relative;
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+}
+
+.formContainer > div > label {
+  position: absolute;
+  top: .2rem;
+  left: 0;
+  transition: .3s;
+  transform-origin: left;
+}
+
+.formContainer > div > input {
+  outline: none;
+
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: solid .1rem var(--font-color);
+  padding: .5rem;
+  width: 90%;
+
+  background-color: transparent;
+}
+
+.formWarning {
+  height: 0;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+}
+
+.formWarning > span {
+  margin-top: .4rem;
+
+  font-size: .7rem;
+  font-weight: 500;
+  color: var(--fancy-pink);
+}
+
+.error {
+  height: 1.1rem;
+}
+
+.formSubmit {
+  border: none;
+  background-color: var(--yellow-honey);
+  border-radius: 1rem;
+  width: 8rem;
+  padding: .8rem;
+  margin: 0 auto;
+  color: var(--whitecocktail);
+  font-weight: 700;
+}
+
+.formContainer > div > input:focus ~ label,
+.formContainer > div > input:valid ~ label {
+  top: -1.5rem;
+  font-size: 0.8rem;
+}
+

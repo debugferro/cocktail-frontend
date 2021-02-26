@@ -1,0 +1,52 @@
+.logoContainer {
+  background-color: var(--blue);
+  border-radius: 50%;
+  /* width: 9rem; */
+
+  box-shadow: 0.1em 0.1em 0em var(--box-shadow);
+
+  /* position: relative; */
+
+  width: 4rem;
+    position: absolute;
+    top: 0%;
+}
+
+.logoContainer > img {
+  width: 100%;
+  padding: .8rem;
+}
+
+.logoContainer > span {
+  position: absolute;
+  top: 43%;
+  left: 11%;
+
+  color: var(--whitecocktail);
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.logoContainer > span:last-child {
+  left: 60%;
+}
+
+@media(min-width: 480px) {
+  .logoContainer {
+    /* width: 4rem;
+    position: absolute;
+    top: 0%; */
+    position: relative;
+    width: 9rem;
+  }
+
+  .logoContainer > img {
+    padding: .1rem;
+  }
+}
+
+@media(max-width: 479px) {
+  .logoContainer > span {
+    display: none;
+  }
+}

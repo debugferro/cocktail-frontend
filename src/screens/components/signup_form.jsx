@@ -9,6 +9,8 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import styles from '../../styles/components/signin_signup_form.module.css';
+
 import requestSignUp from '../../requests/signup';
 import authenticate from '../../actions/authenticate';
 
@@ -20,7 +22,7 @@ const validationSchema = yup.object().shape({
     .required('E-mail address is required'),
   username: yup.string().min(3).max(20).required('Username is required'),
   password: yup.string().required('Password is required!').min(8).max(20),
-  password_confirmation: yup.string()
+  password_confirmation: yup.string().required('Password confirmation is required')
     .oneOf([yup.ref('password'), null], 'Password must match'),
 });
 
@@ -57,22 +59,38 @@ export default function SingUpForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">E-mail</label>
-        <input type="text" name="email" id="email" ref={register()} />
-        {errors.email && <p>{errors.email.message}</p>}
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" id="username" ref={register()} />
-
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" ref={register()} />
-        {errors.password && <p>{errors.password.message}</p>}
-        <label htmlFor="password_confirmation">Password Confirmation</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
-        {errors.passwordConfirmation && <p>{errors.passwordConfirmation.message}</p>}
-        <input type="submit" />
+    <>
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input required noValidate type="text" name="email" id="email" ref={register()} />
+          <label htmlFor="email">E-mail</label>
+          <div className={`${styles.formWarning} ${errors.email ? styles.error : ''}`}>
+            {errors.email && <span>{errors.email.message}</span>}
+          </div>
+        </div>
+        <div>
+          <input required noValidate type="text" name="username" id="username" ref={register()} />
+          <label htmlFor="username">Username</label>
+          <div className={`${styles.formWarning} ${errors.username ? styles.error : ''}`}>
+            {errors.username && <span>{errors.username.message}</span>}
+          </div>
+        </div>
+        <div>
+          <input required noValidate type="password" name="password" id="password" ref={register()} />
+          <label htmlFor="password">Password</label>
+          <div className={`${styles.formWarning} ${errors.password ? styles.error : ''}`}>
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
+        </div>
+        <div>
+          <input required noValidate type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
+          <label htmlFor="password_confirmation">Password Confirmation</label>
+          <div className={`${styles.formWarning} ${errors.password_confirmation ? styles.error : ''}`}>
+          {errors.password_confirmation && <span>{errors.password_confirmation.message}</span>}
+          </div>
+        </div>
+        <input className={styles.formSubmit} type="submit" value="Sign Up" />
       </form>
-    </div>
+    </>
   );
 }
