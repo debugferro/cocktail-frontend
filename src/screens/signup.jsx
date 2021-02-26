@@ -4,10 +4,12 @@ import SingUpForm from './components/signup_form';
 
 function SignUp() {
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <h1>SignUp</h1>
-        <SingUpForm />
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <h1>SignUp</h1>
+          <SingUpForm />
+        </div>
       </div>
     </div>
   );

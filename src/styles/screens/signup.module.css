@@ -1,8 +1,13 @@
+.background {
+  background-image: url('../../images/background.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .container {
   height: 100vh;
   max-width: 992px;
   margin: 0 auto;
-  padding: 2.5rem 2rem;
 
   display: flex;
   flex-direction: column;
@@ -10,4 +15,21 @@
 
 .card {
   background-color: var(--whitecocktail);
+
+  padding: .8rem;
+  max-width: 300px;
+}
+
+.card > h1 {
+  text-align: center;
+}
+
+@media(min-width: 280px) {
+  .container {
+    padding: 2.5rem 2rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
 }

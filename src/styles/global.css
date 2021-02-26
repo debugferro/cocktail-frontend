@@ -27,6 +27,19 @@
   }
 }
 
+@media(max-width: 480px) {
+  html {
+    font-size: 81.5%;
+  }
+}
+
+@media(max-width: 320px) {
+  html {
+    font-size: 75.25%;
+  }
+}
+
+
 body {
   background: var(--background);
   color: var(--font-color);

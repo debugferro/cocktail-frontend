@@ -62,25 +62,25 @@ export default function SingUpForm() {
     <>
       <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input required novalidate type="text" name="email" id="email" ref={register()} />
+          <input required noValidate type="text" name="email" id="email" ref={register()} />
           <label htmlFor="email">E-mail</label>
           {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div>
-          <input required novalidate type="text" name="username" id="username" ref={register()} />
+          <input required noValidate type="text" name="username" id="username" ref={register()} />
           <label htmlFor="username">Username</label>
         </div>
         <div>
-          <input required novalidate type="password" name="password" id="password" ref={register()} />
+          <input required noValidate type="password" name="password" id="password" ref={register()} />
           <label htmlFor="password">Password</label>
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
-          <input required novalidate type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
+          <input required noValidate type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
           <label htmlFor="password_confirmation">Password Confirmation</label>
           {errors.password_confirmation && <p>{errors.password_confirmation.message}</p>}
         </div>
-        <input type="submit" />
+        <input className={styles.formSubmit} type="submit" value="Sign Up" />
       </form>
     </>
   );
