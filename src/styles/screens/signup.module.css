@@ -23,6 +23,7 @@
 
 .card > h1 {
   text-align: center;
+  text-transform: uppercase;
 }
 
 @media(min-width: 280px) {

@@ -1,0 +1,26 @@
+.logoContainer {
+  background-color: var(--blue);
+  border-radius: 50%;
+  width: 10rem;
+
+  position: relative;
+}
+
+.logoContainer > img {
+  width: 100%;
+  padding: 1rem;
+}
+
+.logoContainer > span {
+  position: absolute;
+  top: 43%;
+  left: 11%;
+
+  color: var(--whitecocktail);
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.logoContainer > span:last-child {
+  left: 60%;
+}
