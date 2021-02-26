@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import styles from '../../styles/components/signup_form.module.css';
+import styles from '../../styles/components/signin_signup_form.module.css';
 
 import requestSignUp from '../../requests/signup';
 import authenticate from '../../actions/authenticate';

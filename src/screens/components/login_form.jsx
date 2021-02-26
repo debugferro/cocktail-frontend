@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import styles from '../../styles/components/signin_signup_form.module.css';
+
 import requestAuthentication from '../../requests/authentication';
 
 const validationSchema = yup.object().shape({
@@ -20,14 +22,22 @@ export default function LoginForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">E-mail</label>
-          <input type="text" name="email" id="email" ref={register()} />
-          {errors.email && <p>{errors.email.message}</p>}
-        <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" ref={register()} />
-          {errors.password && <p>{errors.password.message}</p>}
-        <input type="submit" />
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input required noValidate type="text" name="email" id="email" ref={register()} />
+          <label htmlFor="email">E-mail</label>
+          <div className={`${styles.formWarning} ${errors.email ? styles.error : ''}`}>
+            {errors.email && <p>{errors.email.message}</p>}
+          </div>
+        </div>
+        <div>
+          <input required noValidate type="password" name="password" id="password" ref={register()} />
+          <label htmlFor="password">Password</label>
+          <div className={`${styles.formWarning} ${errors.password ? styles.error : ''}`}>
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
+        </div>
+        <input className={styles.formSubmit} type="submit" />
       </form>
     </div>
   );

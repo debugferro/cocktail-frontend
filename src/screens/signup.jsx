@@ -1,10 +1,8 @@
 import React from 'react';
-import styles from '../styles/screens/signup.module.css';
-import SingUpForm from './components/signup_form';
 
+import styles from '../styles/screens/signin_signup.module.css';
+import SingUpForm from './components/signup_form';
 import Logo from './components/logo';
-import TopBar from './components/top_bar';
-import TabBar from './components/tab_bar';
 
 function SignUp() {
   return (
