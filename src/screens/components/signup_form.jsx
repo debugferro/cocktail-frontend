@@ -64,21 +64,30 @@ export default function SingUpForm() {
         <div>
           <input required noValidate type="text" name="email" id="email" ref={register()} />
           <label htmlFor="email">E-mail</label>
-          {errors.email && <p>{errors.email.message}</p>}
+          <div className={`${styles.formWarning} ${errors.email ? styles.error : ''}`}>
+            {errors.email && <span>{errors.email.message}</span>}
+          </div>
         </div>
         <div>
           <input required noValidate type="text" name="username" id="username" ref={register()} />
           <label htmlFor="username">Username</label>
+          <div className={`${styles.formWarning} ${errors.username ? styles.error : ''}`}>
+            {errors.username && <span>{errors.username.message}</span>}
+          </div>
         </div>
         <div>
           <input required noValidate type="password" name="password" id="password" ref={register()} />
           <label htmlFor="password">Password</label>
-          {errors.password && <p>{errors.password.message}</p>}
+          <div className={`${styles.formWarning} ${errors.password ? styles.error : ''}`}>
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
         </div>
         <div>
           <input required noValidate type="password" name="password_confirmation" id="password_confirmation" ref={register()} />
           <label htmlFor="password_confirmation">Password Confirmation</label>
-          {errors.password_confirmation && <p>{errors.password_confirmation.message}</p>}
+          <div className={`${styles.formWarning} ${errors.password_confirmation ? styles.error : ''}`}>
+          {errors.password_confirmation && <span>{errors.password_confirmation.message}</span>}
+          </div>
         </div>
         <input className={styles.formSubmit} type="submit" value="Sign Up" />
       </form>

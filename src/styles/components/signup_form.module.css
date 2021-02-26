@@ -6,8 +6,8 @@
 
 .formContainer > div {
   position: relative;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
 }
 
 .formContainer > div > label {
@@ -28,6 +28,24 @@
   width: 90%;
 
   background-color: transparent;
+}
+
+.formWarning {
+  height: 0;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+}
+
+.formWarning > span {
+  margin-top: .4rem;
+
+  font-size: .7rem;
+  font-weight: 500;
+  color: var(--fancy-pink);
+}
+
+.error {
+  height: 1.1rem;
 }
 
 .formSubmit {

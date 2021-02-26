@@ -13,11 +13,12 @@
   --yellow-honey: #F7B32B;
   --background: #FCF4F4;
   --font-color: #202020;
+  --box-shadow:  #0000006b;
 }
 
 @media(max-width: 1080px) {
   html {
-    font-size: 93.75%;
+    font-size: 100%;
   }
 }
 
