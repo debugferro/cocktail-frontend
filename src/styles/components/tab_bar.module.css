@@ -1,0 +1,33 @@
+.tabBar {
+  background-color: white;
+  padding: 5px;
+  box-shadow: 1px 4px 20px rgba(0,0,0,0.2);
+  display: flex;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon > img {
+  width: 3rem;
+  margin: 1rem;
+}
+
+.centerChild {
+  background-color: #81adc8;
+  box-shadow: 0.1rem 0.1rem 0 black;
+}
+
+.active {
+  border-bottom: solid .2rem orange;
+}
+
+@media(min-width: 480px) {
+  .tabBar {
+    display: none;
+  }
+}

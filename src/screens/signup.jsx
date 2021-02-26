@@ -4,11 +4,12 @@ import SingUpForm from './components/signup_form';
 
 import Logo from './components/logo';
 import TopBar from './components/top_bar';
+import TabBar from './components/tab_bar';
 
 function SignUp() {
   return (
     <>
-      <TopBar />
+
       <div className={styles.background}>
         <div className={styles.container}>
           <Logo />
@@ -18,6 +19,7 @@ function SignUp() {
           </div>
         </div>
       </div>
+
     </>
   );
 }
