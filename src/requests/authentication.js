@@ -13,7 +13,7 @@ const requestAuthentication = createAsyncThunk(
 
     try {
       const response = await axios.post(`${config.url}/login`, { user }, { withCredentials: true });
-      if (response.data.status === 401) {
+      if (response.data.status !== 200) {
         // Reject if backend answers with 401 status
         return rejectWithValue(response.data);
       }
