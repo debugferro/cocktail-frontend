@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -15,9 +16,11 @@ const validationSchema = yup.object().shape({
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm({ mode: 'onChange', resolver: yupResolver(validationSchema) });
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSubmit = async (data) => {
     dispatch(requestAuthentication(data));
+    history.push('/');
   };
 
   return (

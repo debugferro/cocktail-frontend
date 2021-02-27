@@ -1,8 +1,7 @@
 import React from 'react';
 import LoginForm from './components/login_form';
 
-import styles from '../styles/screens/signin_signup.module.css';
-import Logo from './components/logo';
+import styles from '../styles/screens/form_page.module.css';
 
 function Login() {
   return (

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import requestAuthentication from '../requests/authentication';
+import unAuthenticate from '../requests/un_authenticate';
 
 const userSlice = createSlice({
   name: 'user',
@@ -48,6 +49,26 @@ const userSlice = createSlice({
         }
       }
     },
+    [unAuthenticate.pending]: (state, action) => {
+      if (state.requestStatus === 'idle') {
+        state.requestStatus = 'pending';
+        state.presentRequestId = action.meta.requestId;
+      };
+    },
+    [unAuthenticate.fulfilled]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.requestStatus === 'pending' && state.presentRequestId === requestId) {
+        state.requestStatus = 'idle';
+        state.entity = {}; state.presentRequestId = undefined;
+      }
+    },
+    [unAuthenticate.rejected]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.requestStatus === 'pending' && state.presentRequestId === requestId) {
+        state.requestStatus = 'idle';
+        if (action.error) { state.errors = action.error.message }
+      }
+    }
   },
 });
 
