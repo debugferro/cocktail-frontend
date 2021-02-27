@@ -5,9 +5,9 @@ function RecommendedCocktails() {
   const username = useSelector((state) => state.user.entity.username);
   const cocktails = useSelector((state) => state.cocktails.entities.recommended);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [cocktails]);
+  // }, [cocktails]);
 
   return (
     <>

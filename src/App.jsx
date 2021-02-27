@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Index from './screens/index';
 import SignUp from './screens/signup';
 import Login from './screens/login';
+import LogOut from './screens/logout';
 // Components
 import TopBar from './screens/components/top_bar';
 import TabBar from './screens/components/tab_bar';
@@ -23,7 +24,7 @@ function App() {
     dispatch(checkAuthentication()); // Checking if user is logged-in
   }, []);
 
-  const authenticated = useSelector((state) => state.user.entity.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.user.entity.isAuthenticated);
   return (
     <>
       <BrowserRouter>
@@ -33,7 +34,7 @@ function App() {
         <div className={styles.container}>
           <Switch>
             <Route exact path="/" component={Index} />
-            {authenticated ? '' :
+            {isAuthenticated ? <Route exact path="/logout" component={LogOut} /> :
               [
                 <Route exact path="/signup" component={SignUp} />,
                 <Route exact path="/login" component={Login} />
