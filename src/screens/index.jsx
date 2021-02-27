@@ -20,7 +20,8 @@ function Index() {
     <div>
       <RecommendedCocktails />
       { isAuthenticated ?
-        <><Link to="/logout">Sign Out</Link></>
+        <><Link to="/logout">Sign Out</Link>
+          <Link to="/cocktails/new">Create</Link></>
       :
         <><Link to="/login">Sign-in</Link>
           <Link to="/signup">Sign-up</Link></>

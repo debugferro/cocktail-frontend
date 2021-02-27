@@ -7,6 +7,7 @@ import Index from './screens/index';
 import SignUp from './screens/signup';
 import Login from './screens/login';
 import LogOut from './screens/logout';
+import New from './screens/cocktails/new';
 // Components
 import TopBar from './screens/components/top_bar';
 import TabBar from './screens/components/tab_bar';
@@ -34,7 +35,12 @@ function App() {
         <div className={styles.container}>
           <Switch>
             <Route exact path="/" component={Index} />
-            {isAuthenticated ? <Route exact path="/logout" component={LogOut} /> :
+            {isAuthenticated ?
+              [
+                <Route exact path="/logout" component={LogOut} />,
+                <Route exact path="/cocktails/new" component={New} />
+              ]
+              :
               [
                 <Route exact path="/signup" component={SignUp} />,
                 <Route exact path="/login" component={Login} />
