@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 //Components
 import NewCocktailForm from '../components/new_cocktail_form';
 
-import styles from '../../styles/screens/signin_signup.module.css';
+import styles from '../../styles/screens/form_page.module.css';
 
 function New() {
   const isAuthenticated = useSelector((state) => state.user.entity.isAuthenticated);

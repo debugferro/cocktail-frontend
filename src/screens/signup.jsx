@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../styles/screens/signin_signup.module.css';
+import styles from '../styles/screens/form_page.module.css';
 import SingUpForm from './components/signup_form';
 
 function SignUp() {

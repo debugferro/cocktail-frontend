@@ -13,7 +13,7 @@ import TopBar from './screens/components/top_bar';
 import TabBar from './screens/components/tab_bar';
 import Logo from './screens/components/logo';
 // Stylesheet
-import styles from './styles/screens/signin_signup.module.css';
+import styles from './styles/screens/form_page.module.css';
 
 // Actions && Requests
 import checkAuthentication from './requests/check_authentication';
