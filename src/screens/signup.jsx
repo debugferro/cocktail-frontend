@@ -8,15 +8,18 @@ function SignUp() {
   return (
     <>
 
+
       <div className={styles.background}>
-        <div className={styles.container}>
-          <Logo />
+          <div className={styles.closeBtn}>
+            <span>X</span>
+          </div>
+
           <div className={styles.card}>
             <h1>Sign Up</h1>
             <SingUpForm />
           </div>
-        </div>
       </div>
+
 
     </>
   );

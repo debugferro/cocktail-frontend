@@ -15,17 +15,17 @@ function TabBar() {
 
   return (
     <div className={styles.tabBar}>
-      <Link to="/search" className={`${styles.tab} ${location.pathname === '/search' ? styles.active : ''}`}>
+      <Link to="/search" className={`${location.pathname === '/search' ? styles.active : ''}`}>
         <span className={styles.icon}>
           <img src={search} alt="" />
         </span>
       </Link>
-      <Link to="/" className={`${styles.tab} ${location.pathname === '/' ? styles.active : ''}`}>
+      <Link to="/" className={`${location.pathname === '/' ? styles.active : ''}`}>
         <span className={styles.icon}>
           <img src={home} alt="" />
         </span>
       </Link>
-      <Link to="/login" className={`${styles.tab} ${location.pathname === '/login' ? styles.active : ''}`}>
+      <Link to="/login" className={`${location.pathname === '/login' ? styles.active : ''}`}>
         <span className={styles.icon}>
           <img src={login} alt=""/>
         </span>

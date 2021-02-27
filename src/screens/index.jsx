@@ -8,7 +8,6 @@ import Logo from './components/logo';
 function Index() {
   return (
     <div>
-      <Logo />
       <DashBord />
       <Link to="/login">Sign-in</Link>
       <Link to="/signup">Sign-up</Link>

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 17px;
+}
+
 :root {
   --whitecocktail: #f8f6f6;
   --pink: #F4AFAB;
@@ -11,6 +15,7 @@
   --dark-blue: #3E517A;
   --fancy-pink: #BF1363;
   --yellow-honey: #F7B32B;
+  --yellow-honey-hover: #ffc44e;
   --background: #FCF4F4;
   --font-color: #534D4D;
   --box-shadow:  #0000006b;
@@ -29,19 +34,19 @@
 }
 
 @media(max-width: 480px) {
-  html {
+  /* html {
     font-size: 81.5%;
-  }
+  } */
   .Toastify__toast-container--top-right {
     width: 100%
   }
 }
 
-@media(max-width: 320px) {
-  html {
-    font-size: 75.25%;
-  }
-}
+  /* @media(max-width: 320px) {
+    html {
+      font-size: 75.25%;
+    }
+  } */
 
 
 body {
@@ -53,7 +58,7 @@ body, input, textarea, button {
   font: 400 1rem 'Montserrat', sans-serif;
 }
 
-button {
+button, input[type="submit"] {
   cursor: pointer;
 }
 
@@ -61,3 +66,4 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
