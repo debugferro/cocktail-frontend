@@ -2,6 +2,7 @@
   background-color: white;
   padding: 5px;
   box-shadow: 1px 4px 20px rgba(0,0,0,0.2);
+  border-top: 1px solid;
   display: flex;
   color: black;
   position: fixed;
@@ -9,21 +10,42 @@
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.tabBar > a {
+  background-color: var(--yellow-honey);
+  border-radius: 1rem;
+  border: 1px solid;
+
+  transition: 0.3s;
+  outline: none;
+}
+
+.tabBar > a:hover {
+  box-shadow: 8px 3px 0px var(--blue);
+  background-color: var(--yellow-honey-hover);
+  /* transform: scale(1.1); */
+  transform: translateX(-1rem);
 }
 
 .icon > img {
-  width: 3rem;
+  width: 2rem;
   margin: 1rem;
 }
 
 .centerChild {
-  background-color: #81adc8;
-  box-shadow: 0.1rem 0.1rem 0 black;
+  background-color: var(--blue);
+  box-shadow: 0.1rem 0.1rem 0 var(--box-shadow);
 }
 
 .active {
-  border-bottom: solid .2rem orange;
+  background-color: var(--yellow-honey-hover) !important;
+  transition: 0.3s;
+}
+
+.active:hover {
+  transform: none;
 }
 
 @media(min-width: 480px) {

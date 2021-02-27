@@ -9,7 +9,6 @@ function Login() {
     <>
       <div className={styles.background}>
         <div className={styles.container}>
-          <Logo />
           <div className={styles.card}>
             <h1>Sign In</h1>
             <LoginForm />

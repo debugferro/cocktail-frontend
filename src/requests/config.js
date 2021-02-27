@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   };
 } else {
   config = {
-    url: 'http://localhost:3001/api/v1',
+    url: process.env.REACT_APP_API_DEV,
   };
 }
 

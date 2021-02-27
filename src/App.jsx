@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Index from './screens/index';
 import SignUp from './screens/signup';
 import Login from './screens/login';
-
+import styles from './styles/screens/signin_signup.module.css';
 import Logo from './screens/components/logo';
 import TopBar from './screens/components/top_bar';
 import TabBar from './screens/components/tab_bar';
@@ -24,8 +24,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
+
       <TopBar />
+      <Logo />
       <TabBar />
+      <div className={styles.container}>
         <Switch>
 
             <Route exact path="/" component={Index} />
@@ -37,6 +40,7 @@ function App() {
             }
 
         </Switch>
+      </div>
 
       </BrowserRouter>
     </>
